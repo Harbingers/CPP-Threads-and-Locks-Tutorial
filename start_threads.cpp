@@ -9,8 +9,9 @@ void hello(){
 }
 
 int main(){
-    std::thread t1(hello);
-    t1.join();
-
+    std::thread t(hello);
+    // Blocks the current thread until the thread finishes its execution.
+    // When it is done: joinable is false
+    t.join();
     return 0;
 }
