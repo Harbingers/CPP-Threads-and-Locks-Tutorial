@@ -15,3 +15,9 @@ int main(){
     t.join();
     return 0;
 }
+
+/*
+Output:
+Hello from thread 
+Program ended with exit code: 0
+*/
