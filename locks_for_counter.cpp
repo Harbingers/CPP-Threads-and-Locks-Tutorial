@@ -1,6 +1,15 @@
 // A Thread-Safe Counter 
 // Reference: http://baptiste-wicht.com/posts/2012/03/cp11-concurrency-tutorial-part-2-protect-shared-data.html
 
+/**
+ * Problem Without Locks:
+ * 1) incrementation is not an atomic operation. It is made of three operations:
+ * - Read the current value of value
+ * - Add one to the current value
+ * - Write that new value to value
+
+*/
+
 #include <thread>
 #include <iostream>
 #include <vector>
