@@ -5,6 +5,7 @@
 #include <iostream>
 #include <vector>
 
+// a counter, increase 1 whenever increment() is called
 struct Counter {
     int value;
     Counter() : value(0){}
