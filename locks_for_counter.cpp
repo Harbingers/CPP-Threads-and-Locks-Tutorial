@@ -1,6 +1,10 @@
 // A Thread-Safe Counter 
 // Reference: http://baptiste-wicht.com/posts/2012/03/cp11-concurrency-tutorial-part-2-protect-shared-data.html
 
+#include <thread>
+#include <iostream>
+#include <vector>
+
 struct Counter {
     int value;
     Counter() : value(0){}
@@ -29,3 +33,8 @@ int main(){
 
     return 0;
 }
+
+/**
+ * Output:
+ * 500
+ * /
