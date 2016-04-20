@@ -17,19 +17,20 @@
 #include <vector>
 #include <mutex>
 
-// a counter, increase 1 whenever increment() is called
+// a counter
 struct Counter {
     std::mutex mutex;
     int value;
 
     Counter() : value(0) {}
-
+    
+    // increase 1 whenever increment() is called
     void increment(){
         mutex.lock();
         ++value;
         mutex.unlock();
     }
-
+    // decrease 1 whenever decrement() is called
     void decrement(){
         mutex.lock();
         --value;
@@ -39,7 +40,6 @@ struct Counter {
 
 int main(){
     Counter counter;
-
     std::vector<std::thread> threads;
 
     for(int i = 0; i < 5; ++i){
