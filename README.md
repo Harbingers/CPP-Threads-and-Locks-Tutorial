@@ -1,5 +1,5 @@
 # Threads-and-Locks
-<b>Threads and Locks<b><br>
+<b>Threads and Locks</b><br>
 
 1. start_threads
 2. print_threads_id
