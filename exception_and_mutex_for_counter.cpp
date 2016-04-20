@@ -1,9 +1,6 @@
-//=======================================================================
-// Copyright (c) 2014 Baptiste Wicht
-// Distributed under the terms of the MIT License.
-// (See accompanying file LICENSE or copy at
-//  http://opensource.org/licenses/MIT)
-//=======================================================================
+// A thread-safe counter with mutex and exceptions
+// Reference: http://baptiste-wicht.com/posts/2012/03/cp11-concurrency-tutorial-part-2-protect-shared-data.html
+
 
 /*
  * 1. Problem Without Locks:
