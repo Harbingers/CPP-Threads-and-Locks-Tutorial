@@ -7,4 +7,5 @@
 4. counter: exception_and_mutex
 5. counter: auto_release_lock_lockguard
 6. complex number: recursive_mutex
+7. time_mutex
 
