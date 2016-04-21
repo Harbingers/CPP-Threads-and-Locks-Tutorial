@@ -16,20 +16,25 @@
 #include <chrono>
 #include <iostream>
 
-std::timed_mutex timed_mutex;
+std::timed_mutex mutex;
 
 void work(){
-    std::chrono::milliseconds timeout(1000);
+    std::chrono::milliseconds timeout(100);
 
     while(true){
-        if(timed_mutex.try_lock_for(timeout)){
+        if(mutex.try_lock_for(timeout)){
             std::cout << std::this_thread::get_id() << ": with the mutex" << std::endl;
-            std::chrono::milliseconds sleepDuration(3000);
+
+            std::chrono::milliseconds sleepDuration(250);
             std::this_thread::sleep_for(sleepDuration);
-            timed_mutex.unlock();
+
+            mutex.unlock();
+
+            std::this_thread::sleep_for(sleepDuration);
         } else {
             std::cout << std::this_thread::get_id() << ": without mutex" << std::endl;
-            std::chrono::milliseconds sleepDuration(1000);
+
+            std::chrono::milliseconds sleepDuration(100);
             std::this_thread::sleep_for(sleepDuration);
         }
     }
@@ -46,20 +51,37 @@ int main(){
 }
 
 /*
+Compile: clang++ -std=c++11 time_mutex.cpp -pthread
+
+
 Output:
-3074476864: with the mutex
-3066084160: without mutex
-3066084160: without mutex
-3066084160: without mutex
-3074476864: with the mutex
-3066084160: without mutex
-3066084160: without mutex
-3066084160: without mutex
-3074476864: with the mutex
-3066084160: without mutex
-3066084160: without mutex
-3066084160: without mutex
-3074476864: with the mutex
-3066084160: without mutex
+3065948992: with the mutex
+3074341696: without mutex
+3074341696: without mutex
+3074341696: without mutex
+3074341696: with the mutex
+3065948992: without mutex
+3065948992: with the mutex
+3074341696: without mutex
+3074341696: with the mutex
+3065948992: without mutex
+3065948992: with the mutex
+3074341696: without mutex
+3074341696: with the mutex
+3065948992: without mutex
+3065948992: with the mutex
+3074341696: without mutex
+3074341696: with the mutex
+3065948992: without mutex
+3065948992: with the mutex
+3074341696: without mutex
+3074341696: with the mutex
+3065948992: without mutex
+3065948992: with the mutex
+3074341696: without mutex
+3074341696: with the mutex
+3065948992: without mutex
+3065948992: with the mutex
+
 ...
 */
