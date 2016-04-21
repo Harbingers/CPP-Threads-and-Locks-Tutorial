@@ -9,7 +9,8 @@
 //  http://opensource.org/licenses/MIT)
 //=======================================================================
 
-// std::timed_mutex: try_lock_for() -- will work if gets the lock or if timeout
+// std::timed_mutex: try_lock_for() -- tries to lock the mutex. Blocks until timeout elapsed or the lock is acquired
+
 
 #include <thread>
 #include <mutex>
