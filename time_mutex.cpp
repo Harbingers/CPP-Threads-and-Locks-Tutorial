@@ -17,19 +17,19 @@
 #include <chrono>
 #include <iostream>
 
-std::timed_mutex mutex;
+std::timed_mutex timed_mutex;
 
 void work(){
     std::chrono::milliseconds timeout(100);
 
     while(true){
-        if(mutex.try_lock_for(timeout)){
+        if(timed_mutex.try_lock_for(timeout)){
             std::cout << std::this_thread::get_id() << ": with the mutex" << std::endl;
 
             std::chrono::milliseconds sleepDuration(250);
             std::this_thread::sleep_for(sleepDuration);
 
-            mutex.unlock();
+            timed_mutex.unlock();
 
             std::this_thread::sleep_for(sleepDuration);
         } else {
