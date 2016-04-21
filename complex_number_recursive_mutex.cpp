@@ -1,9 +1,18 @@
 // a complex number with recursive mutex
 // Reference: http://baptiste-wicht.com/posts/2012/04/c11-concurrency-tutorial-advanced-locking-and-condition-variables.html
+//=======================================================================
+// Copyright (c) 2014 Baptiste Wicht
+// Distributed under the terms of the MIT License.
+// (See accompanying file LICENSE or copy at
+//  http://opensource.org/licenses/MIT)
+//=======================================================================
 
 // Problem: a thread cannot acquire the same mutex twice
 // Solution: std::recursive_mutex: can acquire a mutex several times by the same thread
 
+
+#include <thread>
+#include <mutex>
 
 struct Complex {
     std::recursive_mutex mutex;
@@ -27,3 +36,10 @@ struct Complex {
         div(y);
     }
 };
+
+int main(){
+    Complex complex;
+    complex.both(32, 23);
+
+    return 0;
+}
