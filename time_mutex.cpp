@@ -27,7 +27,6 @@ void work(){
             std::chrono::milliseconds sleepDuration(250);
             std::this_thread::sleep_for(sleepDuration);
             mutex.unlock();
-            std::this_thread::sleep_for(sleepDuration);
         } else {
             std::cout << std::this_thread::get_id() << ": do work without mutex" << std::endl;
             std::chrono::milliseconds sleepDuration(100);
@@ -48,22 +47,25 @@ int main(){
 
 /*
 Output:
-3066448704: with the mutex
-3074841408: without mutex
-3074841408: without mutex
-3074841408: without mutex
-3074841408: with the mutex
-3066448704: without mutex
-3066448704: with the mutex
-3074841408: without mutex
-3074841408: with the mutex
-3066448704: without mutex
-3066448704: with the mutex
-3074841408: without mutex
-3074841408: with the mutex
-3066448704: without mutex
-3066448704: with the mutex
-3074841408: without mutex
+3065817920: without mutex
+3074210624: with the mutex
+3065817920: without mutex
+3065817920: without mutex
+3074210624: with the mutex
+3065817920: without mutex
+3065817920: without mutex
+3074210624: with the mutex
+3065817920: without mutex
+3065817920: without mutex
+3065817920: without mutex
+3074210624: with the mutex
+3065817920: without mutex
+3065817920: without mutex
+3074210624: with the mutex
+3065817920: without mutex
+3065817920: without mutex
+3065817920: without mutex
+
 
 ...
 */
