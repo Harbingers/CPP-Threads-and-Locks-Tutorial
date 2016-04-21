@@ -9,8 +9,6 @@
 //  http://opensource.org/licenses/MIT)
 //=======================================================================
 
-// std::timed_mutex: try_lock_for() -- tries to lock the mutex. Blocks until timeout elapsed or the lock is acquired
-
 
 #include <thread>
 #include <mutex>
@@ -23,7 +21,7 @@ void work(){
     std::chrono::milliseconds timeout(100);
 
     while(true){
-        if(timed_mutex.try_lock_for(timeout)){
+        if(timed_mutex.try_lock_for(timeout)){ // 等待锁, 一定时限内等到了, 返回true; 没等到, 返回false
             std::cout << std::this_thread::get_id() << ": with the mutex" << std::endl;
 
             std::chrono::milliseconds sleepDuration(250);
