@@ -6,4 +6,5 @@
 3. counter: mutex_for_counter
 4. counter: exception_and_mutex_for_counter
 5. counter: auto_release_lock_lockguard_for_counter
+6. complex number: recursive_mutex
 
