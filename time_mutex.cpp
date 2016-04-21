@@ -48,14 +48,23 @@ int main(){
 
 /*
 Output:
-3065899840: do work without mutex
-3065899840: do work with the mutex
-3074292544: do work without mutex
-3074292544: do work with the mutex
-3065899840: do work without mutex
-3065899840: do work with the mutex
-3074292544: do work without mutex
-3074292544: do work with the mutex
+3066448704: with the mutex
+3074841408: without mutex
+3074841408: without mutex
+3074841408: without mutex
+3074841408: with the mutex
+3066448704: without mutex
+3066448704: with the mutex
+3074841408: without mutex
+3074841408: with the mutex
+3066448704: without mutex
+3066448704: with the mutex
+3074841408: without mutex
+3074841408: with the mutex
+3066448704: without mutex
+3066448704: with the mutex
+3074841408: without mutex
+
 ...
 */
 
