@@ -8,6 +8,9 @@
 //  http://opensource.org/licenses/MIT)
 //=======================================================================
 
+// A condition variable manages a list of threads waiting until another thread notify them
+// Each thread
+
 #include <thread>
 #include <mutex>
 #include <chrono>
@@ -15,6 +18,7 @@
 #include <condition_variable>
 
 struct BoundedBuffer {
+
     int* buffer;
     int capacity;
 
@@ -62,6 +66,7 @@ struct BoundedBuffer {
     }
 };
 
+// Several threads (consumers) are waiting from data produced by another several threads (producers).
 void consumer(int id, BoundedBuffer& buffer){
     for(int i = 0; i < 50; ++i){
         int value = buffer.fetch();
@@ -80,7 +85,7 @@ void producer(int id, BoundedBuffer& buffer){
 
 int main(){
     BoundedBuffer buffer(200);
-
+    // std::ref to pass the buffer by reference, it is necessary to avoid a copy of the buffer.
     std::thread c1(consumer, 0, std::ref(buffer));
     std::thread c2(consumer, 1, std::ref(buffer));
     std::thread c3(consumer, 2, std::ref(buffer));
@@ -97,7 +102,7 @@ int main(){
 }
 
 /*
- Compile: clang++ -std=c++11 condition_variable.cpp -pthread
+ Compile: clang++ -std=c++11 bounded_buffer_condition_variable.cpp -pthread
 
 
 
