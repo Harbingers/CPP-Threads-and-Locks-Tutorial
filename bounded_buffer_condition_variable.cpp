@@ -87,7 +87,7 @@ struct BoundedBuffer {
 void consumer(int id, BoundedBuffer& buffer){
     for(int i = 0; i < 50; ++i){
         int value = buffer.get();
-        std::cout << "Consumer " << id << " fetched " << value << std::endl;
+        std::cout << "Consumer " << id << " gets " << value << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }
 }
@@ -95,7 +95,7 @@ void consumer(int id, BoundedBuffer& buffer){
 void producer(int id, BoundedBuffer& buffer){
     for(int i = 0; i < 75; ++i){
         buffer.put(i);
-        std::cout << "Produced " << id << " produced " << i << std::endl;
+        std::cout << "Produced " << id << " puts " << i << std::endl;
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
     }
 }
@@ -122,50 +122,103 @@ int main(){
  Compile: clang++ -std=c++11 bounded_buffer_condition_variable.cpp -pthread
 
  Output:
- Produced 0 produced 0
-Consumer 0 fetched 0
-Consumer 1 fetched 0
-Produced 1 produced 0
-Produced 0 produced 1
-Consumer 2 fetched 1
-Produced 1 produced 1
-Produced 0 produced 2
-Produced 1 produced 2
-Consumer 1 fetched 1
-Consumer 0 fetched 2
-Produced 0 produced 3
-Produced 1 produced 3
-Consumer 2 fetched 2
-Produced 0 produced 4Produced
-1 produced 4
-Consumer 1 fetched 3
-Consumer 0 fetched 3
-Produced 0 produced Produced 5
-1 produced 5
-Consumer 2 fetched 4
-Produced 0 produced 6
-Produced 1 produced 6
-Produced 0 produced 7
-Produced 1 produced 7
-Consumer 1 fetched 4
-Consumer 0 fetched 5
-Produced 1 produced 8
-Produced 0 produced 8
-Consumer 2 fetched 5
-Produced 0 produced 9Produced
-1 produced 9
-Consumer 1 fetched 6
-Consumer 0 fetched 6
-Produced 0 produced 10
-Produced 1 produced 10
-Consumer 2 fetched 7
-Produced 0 produced 11
-Produced 1 produced 11
-Produced 0 produced 12
-Produced 1 produced 12
-Consumer 1 fetched 7
-Consumer 0 fetched 8
+ 
+Produced Consumer 00 gets  puts 00
 
+Produced 1 puts 0
+Consumer 1 gets 0
+Consumer 2 gets 1Produced 
+1Produced  puts 01 puts 
+1
+Produced 1 puts 2
+Produced 0 puts 2
+Consumer 0 gets 1
+Consumer 1 gets 2
+Produced 0 puts 3Produced 
+1 puts 3
+Consumer 2 gets 2
+Produced 1 puts 4
+Produced 0 puts 4
+Consumer 1 gets Consumer 30
+ gets 3
+Produced 0 puts 5
+Produced 1 puts 5
+Consumer 2 gets 4
+Produced 0 puts 6
+Produced 1 puts 6
+Produced 0 puts 7
+Produced 1 puts 7
+Consumer 0 gets 4
+Consumer 1 gets 5
+Produced 0 puts 8
+Produced 1 puts 8
+Consumer 2 gets 5
+Produced 0 puts 9
+Produced 1 puts 9
+Consumer 0 gets 6Consumer 
+1 gets 6
+Produced 0 puts 10
+Produced 1 puts 10
+Consumer 2 gets 7
+Produced 0 puts 11
+Produced 1 puts 11
+Produced 1 puts 12
+Produced 0 puts 12
+Consumer 0 gets 7
+Consumer 1 gets 8
+Produced 1 puts 13
+Produced 0 puts 13
+Consumer 2 gets 8
+Produced Produced 10 puts 14 puts 14
+
+Consumer 0 gets 9
+Consumer 1 gets 9
+Produced 1 puts 15
+Produced 0 puts 15
+Consumer 2 gets 10
+Produced 1 puts 16
+Produced 0 puts 16
+Produced 1 puts 17
+Produced 0 puts 17
+Consumer 1 gets 10
+Consumer 0 gets 11
+Produced 0 puts 18
+Produced 1 puts 18
+Consumer 2 gets 11
+Produced 0 puts 19
+Produced 1 puts 19
+Consumer 1 gets 12
+Consumer 0 gets 12
+Produced 0 puts 20
+Produced 1 puts 20
+Consumer 2 gets 13
+Produced 1 puts 21
+Produced 0 puts 21
+Produced 0 puts 22
+Produced 1 puts 22
+Consumer 1 gets 13
+Consumer 0 gets 14
+Produced 1 puts 23
+Produced 0 puts 23
+Consumer 2 gets 14
+Produced 1 puts 24
+Produced 0 puts 24
+Consumer 1 gets 15
+Consumer 0 gets 15
+Produced 0 puts 25
+Produced 1 puts 25
+Consumer 2 gets 16
+Produced 0 puts 26
+Produced 1 puts 26
+Produced 1 puts 27
+Produced 0 puts 27
+Consumer 0 gets 16
+Consumer 1 gets 17
+Produced 0 puts 28
+Produced 1 puts 28
+Consumer 2 gets 17
+Produced 1 puts 29
+Produced 0 puts 29
 
 
 */
