@@ -1,5 +1,5 @@
-# Threads-and-Locks
-<b>Threads and Locks</b><br>
+# CPP-Threads-and-Locks-Tutorial
+<b>CPP Threads and Locks Tutorial</b><br>
 
 1. start_threads
 2. print_threads_id
