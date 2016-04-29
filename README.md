@@ -12,3 +12,5 @@
 9. called_once_function
 10. bounded_buffer: condition_variable (notify thread that a lock is freed, 不用轮询)
 
+Reference: http://baptiste-wicht.com
+
